@@ -1,0 +1,29 @@
+{
+  "name": "jestson-notification",
+  "version": "1.0.0",
+  "description": "jestson-notification",
+  "main": "app.js",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/AbdelrahmanDeghedy/jestson-notification.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AbdelrahmanDeghedy/jestson-notification/issues"
+  },
+  "homepage": "https://github.com/AbdelrahmanDeghedy/jestson-notification#readme"
+}
