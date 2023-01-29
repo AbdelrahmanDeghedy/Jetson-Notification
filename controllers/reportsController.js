@@ -1,6 +1,6 @@
 const NotificationUsers = require("./../models/notificationUsersModel");
 const TelegramBot = require("node-telegram-bot-api");
-const token = "5920350839:AAHiZtW2ujSAyzsPsyjvR-uWN7jnkvX-ZkE";
+const token = process.env.TOKEN;
 
 exports.createReports = async (req, res) => {
   const notifiedUsers = await NotificationUsers.find({});
