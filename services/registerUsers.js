@@ -7,14 +7,14 @@ const registerUsers = async (msg, chatId, bot) => {
         userId: chatId,
         username: msg.chat?.first_name + msg.chat?.last_name,
       });
-      bot.sendMessage(chatId, "you're now added to the notification list!");
+      bot.sendMessage(chatId, "You're now added to the notification list!");
     } catch (e) {
       bot.sendMessage(chatId, "You're already added!");
     }
   } else if (msg.text.toLowerCase() == "remove me") {
     try {
       await NotificationUsers.findOneAndRemove({ userId: chatId });
-      bot.sendMessage(chatId, "you're now removed to the notification list!");
+      bot.sendMessage(chatId, "You're now removed from the notification list!");
     } catch (e) {
       bot.sendMessage(chatId, "You're not registered!");
     }
