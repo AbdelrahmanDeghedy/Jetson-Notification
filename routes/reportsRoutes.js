@@ -3,11 +3,8 @@ const reportsRoutes = require("./../controllers/reportsController");
 
 const router = express.Router();
 
-router
-  .route("/")
-  .get(reportsRoutes.getAllReports)
-  .post(reportsRoutes.createReports);
+router.route("/").post(reportsRoutes.createReports);
 
-router.route("/:id").delete(reportsRoutes.deleteReport);
+// router.route("/:id").delete(reportsRoutes.deleteReport);
 
 module.exports = router;

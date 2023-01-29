@@ -1,23 +1,23 @@
-const Report = require("./../models/reportModel");
-
-exports.getAllReports = async (req, res) => {
-  const reports = await Report.find({});
-
-  res.status(200).json({
-    status: "success",
-    data: {
-      reports,
-    },
-  });
-};
+const NotificationUsers = require("./../models/notificationUsersModel");
+const TelegramBot = require("node-telegram-bot-api");
+const token = "5920350839:AAHiZtW2ujSAyzsPsyjvR-uWN7jnkvX-ZkE";
 
 exports.createReports = async (req, res) => {
-  const newReport = await Report.create(req.body);
+  const notifiedUsers = await NotificationUsers.find({});
+  const bot = new TelegramBot(token);
+
+  notifiedUsers.forEach((user) => {
+    console.log(user.userId, req.body);
+    bot.sendMessage(
+      user.userId,
+      JSON.stringify(req.body) ?? "Please enter a valid report"
+    );
+  });
 
   res.status(201).json({
     status: "success",
     data: {
-      report: newReport,
+      notifiedUsers,
     },
   });
 };
