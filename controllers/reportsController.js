@@ -11,10 +11,7 @@ exports.createReports = async (req, res) => {
 
   notifiedUsers.forEach((user) => {
     console.log(user.userId, req.body);
-    bot.sendMessage(
-      user.userId,
-      JSON.stringify(req.body) ?? "Please enter a valid report"
-    );
+    bot.sendMessage(user.userId, req.body ?? "Please enter a valid report");
   });
 
   res.status(201).json({
