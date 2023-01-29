@@ -8,10 +8,10 @@ const token = process.env.TOKEN;
 exports.createReports = async (req, res) => {
   const notifiedUsers = await NotificationUsers.find({});
   const bot = new TelegramBot(token);
-  const message = req.body ?? "Enter a valid message!";
+  let message = req.body;
 
   notifiedUsers.forEach((user) => {
-    bot.sendMessage(user.userId, message);
+    bot.sendMessage(user.userId, message.msg);
   });
 
   res.status(201).json({
