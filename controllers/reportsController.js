@@ -1,5 +1,8 @@
 const NotificationUsers = require("./../models/notificationUsersModel");
 const TelegramBot = require("node-telegram-bot-api");
+const dotenv = require("dotenv");
+
+dotenv.config({ path: "./config.env" });
 const token = process.env.TOKEN;
 
 exports.createReports = async (req, res) => {
