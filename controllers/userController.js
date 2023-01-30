@@ -1,18 +1,22 @@
 const NotificationUsers = require("./../models/notificationUsersModel");
 const bot = require("../services/createBot");
 
-exports.createReports = async (req, res) => {
+exports.getRegisteredUsers = async (req, res) => {
   const notifiedUsers = await NotificationUsers.find({});
-  let message = req.body;
+  let registeredUsernames = "";
 
   notifiedUsers.forEach((user) => {
-    bot.newBot.sendMessage(user.userId, message.msg);
+    registeredUsernames += user.username;
+    registeredUsernames += ", ";
   });
+
+  bot.newBot.sendMessage("Registered Users are:");
+  bot.newBot.sendMessage(registeredUsernames);
 
   res.status(201).json({
     status: "success",
     data: {
-      notifiedUsers,
+      registeredUsernames,
     },
   });
 };
