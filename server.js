@@ -1,17 +1,18 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const app = require("./app");
-const TelegramBot = require("node-telegram-bot-api");
+const bot = require("./services/createBot");
+
 const registerUsers = require("./services/registerUsers");
 
 dotenv.config({ path: "./config.env" });
-
-const token = process.env.TOKEN;
 
 const DB = process.env.DATABASE.replace(
   "<PASSWORD>",
   process.env.DATABASE_PASSWORD
 );
+
+mongoose.set("strictQuery", false);
 
 mongoose
   .connect(DB)
@@ -25,10 +26,7 @@ app.listen(port, () => {
   console.log(`App running on port ${port}...`);
 });
 
-// Create a bot that uses 'polling' to fetch new updates
-const bot = new TelegramBot(token, { polling: true });
-
-bot.on("message", async (msg) => {
+bot.newBot.on("message", async (msg) => {
   const chatId = msg.chat.id;
-  registerUsers(msg, chatId, bot);
+  registerUsers(msg, chatId, bot.newBot);
 });
