@@ -5,6 +5,7 @@ exports.createReports = async (req, res) => {
   const notifiedUsers = await NotificationUsers.find({});
   let message = req.body;
 
+  console.log(message);
   notifiedUsers.forEach((user) => {
     bot.newBot.sendMessage(user.userId, message.msg);
   });
