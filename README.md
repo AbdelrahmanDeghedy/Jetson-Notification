@@ -8,9 +8,13 @@ The jetson module inside of the car will make a call to our API in case of a cra
 
 ![](./img/arch.png)
 
-## Bot Interaction
+## Bot Interaction (On User Interaction)
 
-![](./img/botInteraction.png)
+![](./img/archOnInteraction.png)
+
+## Bot Interaction (On Crash)
+
+![](./img/archOnCrash.png)
 
 ## Future Work
 
