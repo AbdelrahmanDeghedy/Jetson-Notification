@@ -6,7 +6,7 @@ With the use of our publicly available Telegram bot @road_guards_bot, users can 
 
 The jetson module inside of the car will make a call to our API in case of a crash, resulting in a message from the bot (containing the location of the accident as a google maps URL) being sent to all the subscribers.
 
-![](./img/arch.png)
+![](./img/botInteraction.png)
 
 ## Bot Interaction (On User Interaction)
 
