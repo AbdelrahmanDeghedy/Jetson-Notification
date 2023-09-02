@@ -1,7 +1,7 @@
 const NotificationUsers = require("../models/notificationUsersModel");
 
 const registerUsers = async (msg, chatId, bot) => {
-  if (msg.text.toLowerCase() == "add me") {
+  if (msg?.text?.toLowerCase() == "add me") {
     try {
       await NotificationUsers.create({
         userId: chatId,
@@ -14,14 +14,14 @@ const registerUsers = async (msg, chatId, bot) => {
     } catch (e) {
       bot.sendMessage(chatId, "You're already added!");
     }
-  } else if (msg.text.toLowerCase() == "remove me") {
+  } else if (msg?.text?.toLowerCase() == "remove me") {
     try {
       await NotificationUsers.findOneAndRemove({ userId: chatId });
       bot.sendMessage(chatId, "You're now removed from the notification list!");
     } catch (e) {
       bot.sendMessage(chatId, "You're not registered!");
     }
-  } else if (msg.text.toLowerCase() == "users") {
+  } else if (msg?.text?.toLowerCase() == "users") {
     try {
       const notifiedUsers = await NotificationUsers.find({});
       let registeredUsernames = "Registered Users are: \n";
